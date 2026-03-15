@@ -1,13 +1,36 @@
-<div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-lg-10">
-      <div class="text-center mb-5">
-        <h1 class="display-4 text-white mb-3"><%= title %></h1>
-        <p class="text-white-50">GitHub Repository: <a href="https://github.com/DediSeme1/CS408Project">https://github.com/DediSeme1/CS408Project</a></p>
-        <img src="/images/dependency_2x.png" alt="Fullstack Dependency" class="img-fluid my-4" style="max-width: 200px;">
-        <ul class="list-unstyled text-white-50 mb-4">
-          <li><a href="/lab0.html" class="btn btn-secondary mt-3">Go to Lab 0 Page</a></li>
-        </ul>
+<div class="text-center mb-5">
+  <h1 class="display-4 fw-bold">Welcome to CourtOps</h1>
+  <p class="text-muted">Comprehensive gym management system for members, coaches, and classes.</p>
+</div>
+
+<div class="row text-center g-4">
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Members</h5>
+        <p class="card-text text-muted">Manage gym members, track memberships, and view member details.</p>
+        <a href="/members/list" class="btn btn-primary">View All Members</a><br><br>
+        <a href="/members/add" class="btn btn-outline-primary btn-sm">Add New Member</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Coaches</h5>
+        <p class="card-text text-muted">Manage coaching staff, specialties, and schedules.</p>
+        <a href="/coaches" class="btn btn-success">View All Coaches</a><br><br>
+        <a href="/coaches/add" class="btn btn-outline-success btn-sm">Add New Coach</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Classes</h5>
+        <p class="card-text text-muted">Schedule and manage classes, capacity, and instructors.</p>
+        <a href="/classes" class="btn btn-warning">View All Classes</a><br><br>
+        <a href="/classes/add" class="btn btn-outline-warning btn-sm">Add New Class</a>
       </div>
     </div>
   </div>
