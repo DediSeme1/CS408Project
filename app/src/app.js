@@ -19,7 +19,9 @@ if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
 }
 const databaseManager = db.createDatabaseManager(dbPath);
-
+if (databaseManager.members.countAllMembers() === 0) {
+  databaseManager.dbHelpers.seedSampleData();
+}
 
 
 app.set('views', path.join(__dirname, 'views'));
