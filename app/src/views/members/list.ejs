@@ -1,3 +1,37 @@
-<h1 class="mb-4">Members</h1>
-<p class="text-muted">Member list will appear here.</p>
-<a href="/members/add" class="btn btn-primary">+ Add Member</a>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h1 class="mb-0">Members</h1>
+    <p class="text-muted">Manage all gym members</p>
+  </div>
+  <a href="/members/add" class="btn btn-success">+ Add Member</a>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Member Name</th>
+      <th>Status</th>
+      <th>Join Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% members.forEach(member => { %>
+    <tr>
+      <td><%= member.first_name %> <%= member.last_name %></td>
+      <td>
+        <span class="badge <%= member.status === 'Active' ? 'bg-success' : 'bg-secondary' %>">
+          <%= member.status %>
+        </span>
+      </td>
+      <td><%= member.join_date %></td>
+      <td>
+        <a href="/members/<%= member.id %>" class="btn btn-sm btn-outline-primary">View</a>
+        <form action="/members/<%= member.id %>/delete" method="POST" class="d-inline">
+          <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

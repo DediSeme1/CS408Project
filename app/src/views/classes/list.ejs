@@ -1,3 +1,37 @@
-<h1 class="mb-4">Classes</h1>
-<p class="text-muted">Classes list will appear here.</p>
-<a href="/classes/add" class="btn btn-primary">+ Add Class</a>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h1 class="mb-0">Classes</h1>
+    <p class="text-muted">Manage all gym classes</p>
+  </div>
+  <a href="/classes/add" class="btn btn-success">+ Add Class</a>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Class Name</th>
+      <th>Coach</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Capacity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% classes.forEach(cls => { %>
+    <tr>
+      <td><%= cls.class_name %></td>
+      <td><%= cls.coach %></td>
+      <td><%= cls.class_date %></td>
+      <td><%= cls.class_time %></td>
+      <td><%= cls.capacity %></td>
+      <td>
+        <a href="/classes/<%= cls.id %>" class="btn btn-sm btn-outline-primary">View</a>
+        <form action="/classes/<%= cls.id %>/delete" method="POST" class="d-inline">
+          <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

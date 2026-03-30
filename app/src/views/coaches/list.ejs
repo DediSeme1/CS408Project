@@ -1,3 +1,31 @@
-<h1 class="mb-4">Coaches</h1>
-<p class="text-muted">Coaches list will appear here.</p>
-<a href="/coaches/add" class="btn btn-primary">+ Add Coach</a>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h1 class="mb-0">Coaches</h1>
+    <p class="text-muted">Manage all gym coaches</p>
+  </div>
+  <a href="/coaches/add" class="btn btn-success">+ Add Coach</a>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Specialty</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% coaches.forEach(coach => { %>
+    <tr>
+      <td><%= coach.first_name %> <%= coach.last_name %></td>
+      <td><%= coach.speciality %></td>
+      <td>
+        <a href="/coaches/<%= coach.id %>" class="btn btn-sm btn-outline-primary">View</a>
+        <form action="/coaches/<%= coach.id %>/delete" method="POST" class="d-inline">
+          <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
