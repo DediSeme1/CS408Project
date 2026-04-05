@@ -1,3 +1,93 @@
-<h1 class="mb-4">Member Detail</h1>
-<p class="text-muted">Member details will appear here.</p>
-<a href="/members" class="btn btn-secondary">Back to Members</a>
+<div class="container py-4" style="max-width: 650px;">
+
+  
+  <a href="/members" class="text-decoration-none text-muted small">
+    <i class="bi bi-arrow-left me-1"></i> Back to Members
+  </a>
+
+  
+  <div class="d-flex justify-content-between align-items-start mt-3 mb-4">
+    <div>
+      <h2 class="mb-0"><%= member.first_name %> <%= member.last_name %></h2>
+      <p class="text-muted mb-0">Member Details</p>
+    </div>
+    <% if (member.status === 'Active') { %>
+      <span class="badge bg-success fs-6">Active</span>
+    <% } else { %>
+      <span class="badge bg-secondary fs-6">Inactive</span>
+    <% } %>
+  </div>
+
+  
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-white fw-semibold">Member Information</div>
+    <div class="card-body">
+      <table class="table table-borderless mb-0">
+        <tbody>
+          <tr>
+            <td class="text-muted" style="width: 35%;">Full Name</td>
+            <td><strong><%= member.first_name %> <%= member.last_name %></strong></td>
+          </tr>
+          <tr>
+            <td class="text-muted">Email</td>
+            <td>
+              <i class="bi bi-envelope me-1 text-muted"></i>
+              <a href="mailto:<%= member.email %>" class="text-decoration-none"><%= member.email %></a>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-muted">Phone</td>
+            <td>
+              <i class="bi bi-telephone me-1 text-muted"></i>
+              <%= member.phone_number %>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-muted">Join Date</td>
+            <td>
+              <i class="bi bi-calendar me-1 text-muted"></i>
+              <%= member.join_date %>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-muted">Status</td>
+            <td>
+              <% if (member.status === 'Active') { %>
+                <span class="badge bg-success">Active</span>
+              <% } else { %>
+                <span class="badge bg-secondary">Inactive</span>
+              <% } %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+ 
+  <div class="card shadow-sm mb-3">
+    <div class="card-body">
+      <h6 class="card-title mb-3">Update Membership Status</h6>
+      <form action="/members/<%= member.id %>/status" method="POST" class="d-flex gap-2 align-items-center">
+        <select class="form-select" name="status" style="max-width: 180px;">
+          <option value="Active" <%= member.status === 'Active' ? 'selected' : '' %>>Active</option>
+          <option value="Inactive" <%= member.status === 'Inactive' ? 'selected' : '' %>>Inactive</option>
+        </select>
+        <button type="submit" class="btn btn-primary">
+          <i class="bi bi-arrow-repeat me-1"></i> Update Status
+        </button>
+      </form>
+    </div>
+  </div>
+
+  
+  <div class="d-flex justify-content-end">
+    <form action="/members/<%= member.id %>/delete" method="POST"
+          onsubmit="return confirm('Permanently delete <%= member.first_name %> <%= member.last_name %>? This cannot be undone.')">
+      <button type="submit" class="btn btn-outline-danger">
+        <i class="bi bi-trash me-1"></i> Delete Member
+      </button>
+    </form>
+  </div>
+
+</div>

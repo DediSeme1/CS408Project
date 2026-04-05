@@ -1,3 +1,85 @@
-<h1 class="mb-4">Add New Member</h1>
-<p class="text-muted">Add member form will appear here.</p>
-<a href="/members" class="btn btn-secondary">Back to Members</a>
+<div class="container py-4" style="max-width: 600px;">
+
+    
+    <a href="/members" class="text-decoration-none text-muted small">
+        <i class="bi bi-arrow-left me-1"></i> Back to Members
+    </a>
+
+    <h2 class="mt-3 mb-1">Add New Member</h2>
+    <p class="text-muted mb-4">Fill in the form to add a new gym member</p>
+
+    
+    <% if (errors.length > 0) { %>
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                <% errors.forEach(error => { %>
+                    <li><%= error %></li>
+                <% }) %>
+            </ul>
+        </div>
+    <% } %>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <form action="/members/add" method="POST" novalidate>
+
+                <div class="mb-3">
+                  <label for="first_name" class="form-label fw-semibold">First Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="first_name" name="first_name"
+                         placeholder="First name" value="<%= formData.first_name || '' %>" required>
+                </div>
+                <div class="mb-3">
+                  <label for="last_name" class="form-label fw-semibold">Last Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="last_name" name="last_name"
+                         placeholder="Last name" value="<%= formData.last_name || '' %>" required>
+                </div>
+
+              
+                <div class="mb-3">
+                    <label for="email" class="form-label fw-semibold">Email <span class="text-danger">*</span></label>
+                    <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            name="email"
+                            placeholder="member@example.com"
+                            value="<%= formData.email || '' %>"
+                            required
+                    >
+                </div>
+
+                
+                <div class="mb-3">
+                    <label for="phone_number" class="form-label fw-semibold">Phone Number <span class="text-danger">*</span></label>
+                    <input
+                            type="tel"
+                            class="form-control"
+                            id="phone_number"
+                            name="phone_number"
+                            placeholder="(555) 123-4567"
+                            value="<%= formData.phone_number || '' %>"
+                            required
+                    >
+                </div>
+
+    
+                <div class="mb-4">
+                    <label for="status" class="form-label fw-semibold">Status <span class="text-danger">*</span></label>
+                    <select class="form-select" id="status" name="status" required>
+                        <option value="" disabled <%= !formData.status ? 'selected' : '' %>>Select status</option>
+                        <option value="Active" <%= formData.status === 'Active' ? 'selected' : '' %>>Active</option>
+                        <option value="Inactive" <%= formData.status === 'Inactive' ? 'selected' : '' %>>Inactive</option>
+                    </select>
+                </div>
+
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary px-4">Add Member</button>
+                    <a href="/members" class="btn btn-outline-secondary">Cancel</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
