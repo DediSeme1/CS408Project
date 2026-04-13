@@ -19,14 +19,14 @@ router.get('/add', (req, res) => {
 
 
 router.post('/add', (req, res) => {
-  const { first_name, last_name, email, phone_number, specialty } = req.body;
+  const { first_name, last_name, email, phone_number, speciality } = req.body;
 
   const errors = [];
   if (!first_name?.trim())    errors.push('First name is required.');
   if (!last_name?.trim())     errors.push('Last name is required.');
   if (!email?.trim())         errors.push('Email is required.');
   if (!phone_number?.trim())  errors.push('Phone number is required.');
-  if (!specialty?.trim())    errors.push('Specialty is required.');
+  if (!speciality?.trim())    errors.push('Speciality is required.');
 
   if (errors.length > 0) {
     return res.render('coaches/add', { errors, formData: req.body });
@@ -34,7 +34,7 @@ router.post('/add', (req, res) => {
 
   try {
     req.db.coaches.createCoach({
-      first_name, last_name, email, phone_number, specialty,
+      first_name, last_name, email, phone_number, speciality,
       join_date: new Date().toISOString().slice(0, 10)
     });
     res.redirect('/coaches');
@@ -59,14 +59,14 @@ router.get('/:id', (req, res) => {
 
 
 router.post('/:id/edit', (req, res) => {
-  const { first_name, last_name, email, phone_number, specialty } = req.body;
+  const { first_name, last_name, email, phone_number, speciality } = req.body;
 
   const errors = [];
   if (!first_name?.trim())    errors.push('First name is required.');
   if (!last_name?.trim())     errors.push('Last name is required.');
   if (!email?.trim())         errors.push('Email is required.');
   if (!phone_number?.trim())  errors.push('Phone number is required.');
-  if (!specialty?.trim())    errors.push('Specialty is required.');
+  if (!speciality?.trim())    errors.push('Speciality is required.');
 
   if (errors.length > 0) {
     try {
@@ -78,7 +78,7 @@ router.post('/:id/edit', (req, res) => {
   }
 
   try {
-    req.db.coaches.updateCoach(req.params.id, { first_name, last_name, email, phone_number, specialty });
+    req.db.coaches.updateCoach(req.params.id, { first_name, last_name, email, phone_number, speciality });
     res.redirect(`/coaches/${req.params.id}`);
   } catch (err) {
     console.error(err);

@@ -20,7 +20,7 @@ const createCoachesTableSQL = `
     last_name    TEXT    NOT NULL,
     email        TEXT    NOT NULL,
     phone_number TEXT    NOT NULL,
-    specialty   TEXT    NOT NULL,
+    speciality   TEXT    NOT NULL,
     join_date    TEXT    NOT NULL,
     created_at   TEXT    NOT NULL DEFAULT (datetime('now'))
   )`;
@@ -48,11 +48,11 @@ const SEED_MEMBERS = [
 ];
 
 const SEED_COACHES = [
-  { first_name: 'Mike',    last_name: 'Thompson', email: 'mike.thompson@courtops.com', phone_number: '(208) 555-0201', specialty: 'Strength Training', join_date: '2022-06-01' },
-  { first_name: 'Jessica', last_name: 'Lee',      email: 'jessica.lee@courtops.com',  phone_number: '(208) 555-0202', specialty: 'Basketball',        join_date: '2021-09-15' },
-  { first_name: 'Robert',  last_name: 'Garcia',   email: 'robert.g@courtops.com',     phone_number: '(208) 555-0203', specialty: 'CrossFit',          join_date: '2023-01-10' },
-  { first_name: 'Amanda',  last_name: 'Chen',     email: 'amanda.chen@courtops.com',  phone_number: '(208) 555-0204', specialty: 'Weightlifting',     join_date: '2022-11-20' },
-  { first_name: 'Chris',   last_name: 'Martinez', email: 'chris.m@courtops.com',      phone_number: '(208) 555-0205', specialty: 'Boxing',            join_date: '2023-04-05' },
+  { first_name: 'Mike',    last_name: 'Thompson', email: 'mike.thompson@courtops.com', phone_number: '(208) 555-0201', speciality: 'Strength Training', join_date: '2022-06-01' },
+  { first_name: 'Jessica', last_name: 'Lee',      email: 'jessica.lee@courtops.com',  phone_number: '(208) 555-0202', speciality: 'Basketball',        join_date: '2021-09-15' },
+  { first_name: 'Robert',  last_name: 'Garcia',   email: 'robert.g@courtops.com',     phone_number: '(208) 555-0203', speciality: 'CrossFit',          join_date: '2023-01-10' },
+  { first_name: 'Amanda',  last_name: 'Chen',     email: 'amanda.chen@courtops.com',  phone_number: '(208) 555-0204', speciality: 'Weightlifting',     join_date: '2022-11-20' },
+  { first_name: 'Chris',   last_name: 'Martinez', email: 'chris.m@courtops.com',      phone_number: '(208) 555-0205', speciality: 'Boxing',            join_date: '2023-04-05' },
 ];
 
 const SEED_CLASSES = [
@@ -128,20 +128,20 @@ function createDatabaseManager(dbPath) {
     getCoachById: (id) =>
       database.prepare('SELECT * FROM coaches WHERE id = ?').get(id),
 
-    createCoach: ({ first_name, last_name, email, phone_number, specialty, join_date }) => {
+    createCoach: ({ first_name, last_name, email, phone_number, speciality, join_date }) => {
       const info = database
-        .prepare(`INSERT INTO coaches (first_name, last_name, email, phone_number, specialty, join_date)
+        .prepare(`INSERT INTO coaches (first_name, last_name, email, phone_number, speciality, join_date)
                   VALUES (?, ?, ?, ?, ?, ?)`)
-        .run(first_name, last_name, email, phone_number, specialty, join_date ?? new Date().toISOString().slice(0, 10));
+        .run(first_name, last_name, email, phone_number, speciality, join_date ?? new Date().toISOString().slice(0, 10));
       return info.lastInsertRowid;
     },
 
-    updateCoach: (id, { first_name, last_name, email, phone_number, specialty }) => {
+    updateCoach: (id, { first_name, last_name, email, phone_number, speciality }) => {
       const info = database
         .prepare(`UPDATE coaches
-                  SET first_name = ?, last_name = ?, email = ?, phone_number = ?, specialty = ?
+                  SET first_name = ?, last_name = ?, email = ?, phone_number = ?, speciality = ?
                   WHERE id = ?`)
-        .run(first_name, last_name, email, phone_number, specialty, id);
+        .run(first_name, last_name, email, phone_number, speciality, id);
       return info.changes;
     },
 
@@ -206,8 +206,8 @@ function createDatabaseManager(dbPath) {
          VALUES (@first_name, @last_name, @email, @phone_number, @status, @join_date)`
       );
       const insertCoach = database.prepare(
-        `INSERT INTO coaches (first_name, last_name, email, phone_number, specialty, join_date)
-         VALUES (@first_name, @last_name, @email, @phone_number, @specialty, @join_date)`
+        `INSERT INTO coaches (first_name, last_name, email, phone_number, speciality, join_date)
+         VALUES (@first_name, @last_name, @email, @phone_number, @speciality, @join_date)`
       );
       const insertClass = database.prepare(
         `INSERT INTO classes (class_name, coach, class_date, class_time, capacity)
