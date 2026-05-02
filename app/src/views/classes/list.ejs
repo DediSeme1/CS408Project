@@ -34,18 +34,20 @@
                 <td><strong><%= cls.class_name %></strong></td>
                 <td><%= cls.coach %></td>
                 <td><%= cls.class_date %></td>
-                <td><%= cls.class_time %></td>
+                <td><%= new Date('1970-01-01T' + cls.class_time).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true }) %></td>
                 <td><%= cls.capacity %></td>
                 <td class="text-end">
-                  <a href="/classes/<%= cls.id %>" class="btn btn-sm btn-outline-primary me-1" title="View Details">
-                    <i class="bi bi-eye"></i>
-                  </a>
-                  <form action="/classes/<%= cls.id %>/delete" method="POST" class="d-inline"
-                        onsubmit="return confirm('Delete <%= cls.class_name %>? This cannot be undone.')">
-                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete Class">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </form>
+                  <div class="btn-group btn-group-sm">
+                    <a href="/classes/<%= cls.id %>" class="btn btn-sm btn-outline-primary me-1" title="View Details">
+                      <i class="bi bi-eye"></i>
+                    </a>
+                    <form action="/classes/<%= cls.id %>/delete" method="POST" class="d-inline"
+                          onsubmit="return confirm('Delete <%= cls.class_name %>? This cannot be undone.')">
+                      <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete Class">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </form>
+                  </div>
                 </td>
               </tr>
             <% }) %>
