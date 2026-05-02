@@ -10,8 +10,8 @@ test.describe('Landing Page', () => {
   test('shows stats on the landing page', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('text=Active Members')).toBeVisible();
-    await expect(page.locator('div.mt-1', { hasText: 'Coaches' })).toBeVisible();
-    await expect(page.locator('text=Classes This Week')).toBeVisible();
+    await expect(page.locator('text=Total Coaches')).toBeVisible();
+    await expect(page.locator('text=Weekly Classes')).toBeVisible();
   });
  
   test('has navigation links to members, coaches, and classes', async ({ page }) => {
