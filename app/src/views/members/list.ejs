@@ -42,26 +42,25 @@
                   <% } %>
                 </td>
                 <td><%= member.join_date %></td>
-                <td class="text-end">
-                 
-                  <a href="/members/<%= member.id %>" class="btn btn-sm btn-outline-primary me-1" title="View Details">
-                    <i class="bi bi-eye"></i>
-                  </a>
-                  
-                  <form action="/members/<%= member.id %>/status" method="POST" class="d-inline">
-                    <input type="hidden" name="status" value="<%= member.status === 'Active' ? 'Inactive' : 'Active' %>">
-                    <button type="submit" class="btn btn-sm btn-outline-warning me-1" title="Toggle Status">
-                      <i class="bi bi-arrow-repeat"></i>
-                    </button>
-                  </form>
-                  
-                  <form action="/members/<%= member.id %>/delete" method="POST" class="d-inline"
-                        onsubmit="return confirm('Delete <%= member.first_name %> <%= member.last_name %>? This cannot be undone.')">
-                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete Member">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </form>
-                </td>
+                  <td class="text-end">
+                    <div class="btn-group btn-group-sm">
+                      <a href="/members/<%= member.id %>" class="btn btn-sm btn-outline-primary me-1" title="View Details">
+                        <i class="bi bi-eye"></i>
+                      </a>
+                      <form action="/members/<%= member.id %>/status" method="POST" class="d-inline">
+                        <input type="hidden" name="status" value="<%= member.status === 'Active' ? 'Inactive' : 'Active' %>">
+                        <button type="submit" class="btn btn-sm btn-outline-warning me-1" title="Toggle Status">
+                          <i class="bi bi-arrow-repeat"></i>
+                        </button>
+                      </form>
+                      <form action="/members/<%= member.id %>/delete" method="POST" class="d-inline"
+                            onsubmit="return confirm('Delete <%= member.first_name %> <%= member.last_name %>?')">
+                        <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete">
+                          <i class="bi bi-trash"></i>
+                        </button>
+                      </form>
+                    </div>
+                  </td>
               </tr>
             <% }) %>
           </tbody>
