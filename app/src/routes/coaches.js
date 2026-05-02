@@ -26,7 +26,7 @@ router.post('/add', (req, res) => {
   if (!last_name?.trim())     errors.push('Last name is required.');
   if (!email?.trim())         errors.push('Email is required.');
   if (!phone_number?.trim())  errors.push('Phone number is required.');
-  if (!speciality?.trim())    errors.push('Speciality is required.');
+  if (!speciality?.trim())    errors.push('Specialty is required.');
 
   if (errors.length > 0) {
     return res.render('coaches/add', { errors, formData: req.body });
@@ -66,7 +66,7 @@ router.post('/:id/edit', (req, res) => {
   if (!last_name?.trim())     errors.push('Last name is required.');
   if (!email?.trim())         errors.push('Email is required.');
   if (!phone_number?.trim())  errors.push('Phone number is required.');
-  if (!speciality?.trim())    errors.push('Speciality is required.');
+  if (!speciality?.trim())    errors.push('Specialty is required.');
 
   if (errors.length > 0) {
     try {

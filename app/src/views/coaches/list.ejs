@@ -6,7 +6,7 @@
       <h2 class="mb-1">Coaches</h2>
       <p class="text-muted mb-0">Manage all gym coaches</p>
     </div>
-    <a href="/coaches/add" class="btn btn-success">
+    <a href="/coaches/add" class="btn btn-primary">
       <i class="bi bi-plus-lg me-1"></i> Add Coach
     </a>
   </div>
@@ -22,7 +22,7 @@
           <thead class="table-light">
             <tr>
               <th>Full Name</th>
-              <th>Speciality</th>
+              <th>Specialty</th>
               <th>Join Date</th>
               <th class="text-end">Actions</th>
             </tr>
@@ -31,20 +31,21 @@
             <% coaches.forEach(coach => { %>
               <tr>
                 <td><strong><%= coach.first_name %> <%= coach.last_name %></strong></td>
-                <td><span class="badge bg-info text-dark"><%= coach.speciality %></span></td>
+                <td><span class="text-dark"><%= coach.speciality %></span></td>
                 <td><%= coach.join_date %></td>
                 <td class="text-end">
-                  
-                  <a href="/coaches/<%= coach.id %>" class="btn btn-sm btn-outline-primary me-1" title="View Details">
-                    <i class="bi bi-eye"></i>
-                  </a>
+                  <div class="btn-group btn-group-sm">
+                    <a href="/coaches/<%= coach.id %>" class="btn btn-sm btn-outline-primary me-1" title="View Details">
+                      <i class="bi bi-eye"></i>
+                    </a>
                 
-                  <form action="/coaches/<%= coach.id %>/delete" method="POST" class="d-inline"
-                        onsubmit="return confirm('Delete <%= coach.first_name %> <%= coach.last_name %>? This cannot be undone.')">
-                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete Coach">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </form>
+                    <form action="/coaches/<%= coach.id %>/delete" method="POST" class="d-inline"
+                          onsubmit="return confirm('Delete <%= coach.first_name %> <%= coach.last_name %>? This cannot be undone.')">
+                      <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete Coach">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </form>
+                  </div>
                 </td>
               </tr>
             <% }) %>

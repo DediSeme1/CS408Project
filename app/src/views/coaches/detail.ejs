@@ -10,7 +10,7 @@
       <h2 class="mb-0"><%= coach.first_name %> <%= coach.last_name %></h2>
       <p class="text-muted mb-0">Coach Details</p>
     </div>
-    <span class="badge bg-info text-dark fs-6"><%= coach.speciality %></span>
+    <span class="badge bg-transparent text-dark fs-6"><%= coach.speciality %></span>
   </div>
 
   <% if (locals.errors && errors.length > 0) { %>
@@ -53,7 +53,7 @@
           </div>
 
           <div class="mb-4">
-            <label class="form-label fw-semibold">Speciality <span class="text-danger">*</span></label>
+            <label class="form-label fw-semibold">Specialty <span class="text-danger">*</span></label>
             <input type="text" class="form-control" name="speciality" value="<%= coach.speciality %>" required>
           </div>
 
@@ -79,8 +79,8 @@
               <td><strong><%= coach.first_name %> <%= coach.last_name %></strong></td>
             </tr>
             <tr>
-              <td class="text-muted">Speciality</td>
-              <td><span class="badge bg-info text-dark"><%= coach.speciality %></span></td>
+              <td class="text-muted">Specialty</td>
+              <td><span class="text-dark"><%= coach.speciality %></span></td>
             </tr>
             <tr>
               <td class="text-muted">Email</td>
