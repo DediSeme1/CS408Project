@@ -1,45 +1,113 @@
 body {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-  padding: 20px 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
 }
 
-a {
-  color: #00B7FF;
+.navbar-brand {
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
 }
 
 .card {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 10px;
 }
 
 .card-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-}
-
-.todo-item {
+  background-color: #fff;
   border-bottom: 1px solid #e9ecef;
-  padding: 12px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  font-weight: 600;
+  padding: 1rem 1.25rem;
 }
 
-.todo-item:last-child {
-  border-bottom: none;
+.table th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6c757d;
+  border-bottom: 2px solid #e9ecef;
 }
 
-.badge-completed {
-  background-color: #28a745;
+.table td {
+  vertical-align: middle;
+  padding: 0.85rem 1rem;
 }
 
-.badge-pending {
-  background-color: #ffc107;
-  color: #333;
+.table tbody tr:hover {
+  background-color: #f8f9fa;
 }
 
-.btn-delete {
-  padding: 0.25rem 0.5rem;
+.badge {
+  font-size: 0.75rem;
+  padding: 0.4em 0.75em;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.btn-sm {
+  padding: 0.3rem 0.6rem;
+}
+
+.form-control, .form-select {
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  padding: 0.5rem 0.75rem;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-label {
   font-size: 0.875rem;
+  margin-bottom: 0.35rem;
+  color: #374151;
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.stat-card {
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stat-card .stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-card .stat-label {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #6c757d;
+  text-decoration: none;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.back-link:hover {
+  color: #343a40;
+}
+
+footer {
+  color: #ffffff;
+  font-size: 0.85rem;
 }
