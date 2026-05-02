@@ -1,37 +1,95 @@
-<div class="text-center mb-5">
-  <h1 class="display-4 fw-bold">Welcome to CourtOps</h1>
-  <p class="text-muted">Comprehensive gym management system for members, coaches, and classes.</p>
-</div>
+<div class="container py-5">
 
-<div class="row text-center g-4">
-  <div class="col-md-4">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <h5 class="card-title">Members</h5>
-        <p class="card-text text-muted">Manage gym members, track memberships, and view member details.</p>
-        <a href="/members" class="btn btn-primary">View All Members</a><br><br>
-        <a href="/members/add" class="btn btn-outline-primary btn-sm">Add New Member</a>
+
+  <div class="text-center mb-5">
+    <h1 class="display-4 fw-bold">Welcome to CourtOps</h1>
+    <p class="text-muted fs-5">Comprehensive gym management system for members, coaches, and classes.</p>
+  </div>
+
+
+  
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <div class="mb-3">
+            <i class="bi bi-people-fill text-primary" style="font-size: 2rem;"></i>
+          </div>
+          <h5 class="card-title fw-bold">Members</h5>
+          <p class="card-text text-muted flex-grow-1">Manage gym members, track memberships, and view member details.</p>
+          <div class="d-grid gap-2 mt-3">
+            <a href="/members" class="btn btn-primary">
+              <i class="bi bi-list me-1"></i> View All Members
+            </a>
+            <a href="/members/add" class="btn btn-outline-primary btn-sm">
+              <i class="bi bi-plus me-1"></i> Add New Member
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <div class="mb-3">
+            <i class="bi bi-person-badge-fill text-success" style="font-size: 2rem;"></i>
+          </div>
+          <h5 class="card-title fw-bold">Coaches</h5>
+          <p class="card-text text-muted flex-grow-1">Manage coaching staff, specialties, and schedules.</p>
+          <div class="d-grid gap-2 mt-3">
+            <a href="/coaches" class="btn btn-success">
+              <i class="bi bi-list me-1"></i> View All Coaches
+            </a>
+            <a href="/coaches/add" class="btn btn-outline-success btn-sm">
+              <i class="bi bi-plus me-1"></i> Add New Coach
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <div class="mb-3">
+            <i class="bi bi-calendar-week-fill text-warning" style="font-size: 2rem;"></i>
+          </div>
+          <h5 class="card-title fw-bold">Classes</h5>
+          <p class="card-text text-muted flex-grow-1">Schedule and manage classes, capacity, and instructors.</p>
+          <div class="d-grid gap-2 mt-3">
+            <a href="/classes" class="btn btn-warning">
+              <i class="bi bi-list me-1"></i> View All Classes
+            </a>
+            <a href="/classes/add" class="btn btn-outline-warning btn-sm">
+              <i class="bi bi-plus me-1"></i> Add New Class
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <h5 class="card-title">Coaches</h5>
-        <p class="card-text text-muted">Manage coaching staff, specialties, and schedules.</p>
-        <a href="/coaches" class="btn btn-success">View All Coaches</a><br><br>
-        <a href="/coaches/add" class="btn btn-outline-success btn-sm">Add New Coach</a>
+
+  
+  <div class="row text-center g-4 mb-5">
+    <div class="col-md-4">
+      <div class="stat-card bg-primary text-white shadow-sm">
+        <div class="stat-number"><%= activeMembers %></div>
+        <div class="stat-label">Active Members</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="stat-card bg-success text-white shadow-sm">
+        <div class="stat-number"><%= totalCoaches %></div>
+        <div class="stat-label">Total Coaches</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="stat-card bg-warning text-dark shadow-sm">
+        <div class="stat-number"><%= weeklyClasses %></div>
+        <div class="stat-label">Weekly Classes</div>
       </div>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <h5 class="card-title">Classes</h5>
-        <p class="card-text text-muted">Schedule and manage classes, capacity, and instructors.</p>
-        <a href="/classes" class="btn btn-warning">View All Classes</a><br><br>
-        <a href="/classes/add" class="btn btn-outline-warning btn-sm">Add New Class</a>
-      </div>
-    </div>
-  </div>
+
 </div>
