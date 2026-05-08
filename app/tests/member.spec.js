@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Members', () => {
 
-  // ── List ────────────────────────────────────────────────────
+  //  List
   test('list page loads with table', async ({ page }) => {
     await page.goto('/members');
     await expect(page.locator('h2')).toContainText('Members');
@@ -14,7 +14,7 @@ test.describe('Members', () => {
     await expect(page).toHaveTitle(/CourtOps/);
   });
 
-  // ── Add ─────────────────────────────────────────────────────
+  //  Add 
   test('add form renders all fields', async ({ page }) => {
     await page.goto('/members/add');
     await expect(page.locator('h2')).toContainText('Add New Member');
@@ -44,7 +44,7 @@ test.describe('Members', () => {
     await expect(page.locator('table')).toContainText('Test Member');
   });
 
-  // ── Detail ───────────────────────────────────────────────────
+  // Detail 
   test('detail page shows member information', async ({ page }) => {
     await page.goto('/members');
     await page.locator('table a[href^="/members/"]').first().click();
@@ -52,7 +52,7 @@ test.describe('Members', () => {
     await expect(page.locator('.card-header')).toContainText('Member Information');
   });
 
-  // ── Status Update ────────────────────────────────────────────
+  // Status Update 
   test('can update membership status', async ({ page }) => {
     await page.goto('/members');
     await page.locator('table a[href^="/members/"]').first().click();
@@ -65,7 +65,7 @@ test.describe('Members', () => {
     await expect(page.locator('.badge.fs-6')).toContainText('Inactive');
   });
 
-  // ── Delete ───────────────────────────────────────────────────
+  // Delete 
   test('can delete a member from detail page', async ({ page }) => {
     // Add a member specifically to delete
     await page.goto('/members/add');
@@ -85,7 +85,7 @@ test.describe('Members', () => {
     await expect(page).toHaveURL('/members');
   });
 
-  // ── 404 ──────────────────────────────────────────────────────
+  // 404 
   test('non-existent member shows error page', async ({ page }) => {
     await page.goto('/members/99999');
     await expect(page.locator('body')).toContainText('not found');
